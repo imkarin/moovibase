@@ -1,31 +1,23 @@
+import { useState } from 'react';
 import './App.css';
 
-// Custom component
-const Person = (props) => {
-  return (
-    <>
-      <h1>Name: {props.firstName}</h1>
-      <h2>Last name: {props.lastName}</h2>
-      <h2>Age: {props.age}</h2>
-    </>
-  )
-}
 
 function App() {
-  const name = 'John';
+  // State: [name of the state, setter-function] = useState(initialvalue);
+  const [counter, setCounter] = useState(0);
 
   return (
     <div className="App">
-      <Person 
-        firstName='John' 
-        lastName='Doe' 
-        age={27} 
-      />
-      <Person 
-        firstName='Danny' 
-        lastName="O'Donoghue" 
-        age={25} 
-      />
+      {/* Events on button */}
+      <button onClick={() => {
+        setCounter((prevCount) => prevCount + 1)
+      }}>+</button>
+      
+      <h1>{counter}</h1>
+
+      <button onClick={() => {
+        setCounter((prevCount) => prevCount - 1)
+      }}>-</button>
     </div>
   );
 }
