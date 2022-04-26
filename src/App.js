@@ -39,6 +39,12 @@ const App = () => {
       .then(foundMovies => setMovies(foundMovies));
   }, []);
 
+  // arrow functions in jsx are bad practice, so replace with regular function
+  function performSearch() {
+    searchMovies(searchTerm)
+      .then(foundMovies => setMovies(foundMovies))
+  }
+
   return (
     <div className='app'>
       <h1 className={classes.myHeader}>Moovi</h1>
@@ -54,10 +60,7 @@ const App = () => {
           <img 
             src={SearchIcon}
             alt='Search icon'
-            onClick={() => {
-              searchMovies(searchTerm)
-                .then(foundMovies => setMovies(foundMovies))
-            }}
+            onClick={performSearch}
             className={classes.searchIcon}
             />
         </button>
@@ -68,7 +71,7 @@ const App = () => {
           ? (
             movies.map((movie, index) => <MovieCard key={index} movie={movie} />)
           ) : (
-            'Loading movies...'
+            <p>No movies or series found</p>
           )
         }
       </div>
