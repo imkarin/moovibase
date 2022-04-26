@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 
 import SearchIcon from './images/search-icon.svg';
+import MovieCard from './components/MovieCard';
 
 // Create styles
 const useStyles = createUseStyles({
@@ -24,7 +25,8 @@ const API_URL = 'http://omdbapi.com/?i=tt3896198&apikey=88c7a902';
 const App = () => {
   // Use jss classes defined above
   const classes = useStyles();
-  const [movies, setMovies] = useState(null);
+  const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const searchMovies = async (title) => {
     const res = await fetch(`${API_URL}&s=${title}`);
@@ -33,9 +35,9 @@ const App = () => {
   }
   
   useEffect(() => {
-    searchMovies('The batman')
+    searchMovies('The Batman')
       .then(foundMovies => setMovies(foundMovies));
-  });
+  }, []);
 
   return (
     <div className='app'>
@@ -45,31 +47,29 @@ const App = () => {
         <input 
           placeholder='Search for movies'
           type='text'
-          value='The Batman'
-          onChange={() => {}}
+          value={searchTerm}
+          onChange={(e) => { setSearchTerm(e.target.value) }}
         />
         <button className={classes.button}> 
           <img 
             src={SearchIcon}
             alt='Search icon'
-            onClick={() => {}}
+            onClick={() => {
+              searchMovies(searchTerm)
+                .then(foundMovies => setMovies(foundMovies))
+            }}
             className={classes.searchIcon}
             />
         </button>
       </div>
 
       <div className='container'>
-        { movies ? (
-          <ul>
-            { movies.map((movie, index) => (
-              <li key={index}>
-                <img src={movie.Poster} />
-                <p>{movie.Title}</p>
-              </li>
-            )) }
-          </ul>
-          ) :
-          'Loading movies...'
+        { movies?.length > 0
+          ? (
+            movies.map((movie, index) => <MovieCard key={index} movie={movie} />)
+          ) : (
+            'Loading movies...'
+          )
         }
       </div>
     </div>
