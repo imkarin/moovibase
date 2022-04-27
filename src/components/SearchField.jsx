@@ -6,21 +6,21 @@ const SearchField = ({searchTerm, searchTermToParent, performSearchToParent}) =>
   const classes = styles();
 
   return (
-    <div className='search'>
-        <input 
-          placeholder='Search for movies'
-          type='text'
-          value={searchTerm}
-          onChange={(e) => { searchTermToParent(e.target.value) }}
-        />
-        <button className={classes.button} onClick={performSearchToParent}> 
-          <img 
-            src={SearchIcon}
-            alt='Search icon'
-            className={classes.searchIcon}
-            />
-        </button>
-      </div>
+    <div>
+      <input 
+        placeholder='Search for movies'
+        type='text'
+        value={searchTerm}
+        onChange={(e) => { searchTermToParent(e.target.value) }}
+      />
+      <button className={classes.button} onClick={performSearchToParent}> 
+        <img 
+          src={SearchIcon}
+          alt='Search icon'
+          className={classes.searchIcon}
+          />
+      </button>
+    </div>
   )
 }
 
