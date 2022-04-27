@@ -9,6 +9,10 @@ const StyledNav = styled.nav`
   padding-top: 32px;
   padding-bottom: 32px;
   z-index: 2;
+
+  img {
+    grid-column: 1 / 6;
+  }
 `
 
 const Navigation = () => {

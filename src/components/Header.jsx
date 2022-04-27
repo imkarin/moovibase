@@ -29,6 +29,10 @@ background-attachment: fixed;
 
 > div:first-child {
   z-index: 1;
+  
+  > div { // h1 and searchfield
+    grid-column: 4 / 10;
+  }
 }
 
 h1 {
