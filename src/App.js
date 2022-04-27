@@ -2,21 +2,13 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 
-import SearchBar from './components/SearchBar';
+import SearchField from './components/SearchField';
 import MovieCard from './components/MovieCard';
 
 // Create styles
 const useStyles = createUseStyles({
   myHeader: {
     color: 'green'
-  },
-  searchIcon: {
-    width: 24,
-    display: 'inline-block',
-    verticalAlign: 'middle'
-  },
-  button: {
-    cursor: 'pointer'
   }
 });
 
@@ -53,11 +45,11 @@ const App = () => {
     <div className='app'>
       <h1 className={classes.myHeader}>Moovi</h1>
 
-      <SearchBar 
+      <SearchField 
         searchTerm={searchTerm}
         searchTermToParent={setSearchTermFromChild} 
         performSearchToParent={performSearch} 
-        />
+      />
 
       <div className='container'>
         { movies?.length > 0
