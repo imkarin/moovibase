@@ -12,7 +12,7 @@ const useStyles = createUseStyles({
   }
 });
 
-const API_URL = 'http://omdbapi.com/?i=tt3896198&apikey=88c7a902';
+const API_URL = 'http://omdbapi.com/?apikey=88c7a902';
 
 const App = () => {
   // Use jss classes defined above
