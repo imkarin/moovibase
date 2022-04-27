@@ -1,23 +1,19 @@
 import React from 'react';
 import SearchIcon from '../images/search-icon.svg';
-import styles from './SearchField.styles';
 
-const SearchField = ({searchTerm, searchTermToParent, performSearchToParent}) => {
-  const classes = styles();
-
+const SearchField = (props) => {
   return (
     <div>
       <input 
         placeholder='Search for movies'
         type='text'
-        value={searchTerm}
-        onChange={(e) => { searchTermToParent(e.target.value) }}
+        value={props.searchTerm}
+        onChange={(e) => { props.updateParentSearchTerm(e.target.value) }}
       />
-      <button className={classes.button} onClick={performSearchToParent}> 
+      <button onClick={props.performSearchToParent}> 
         <img 
           src={SearchIcon}
           alt='Search icon'
-          className={classes.searchIcon}
           />
       </button>
     </div>
