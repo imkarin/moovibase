@@ -3,10 +3,9 @@ import { useEffect, useState } from 'react';
 
 import FeaturedMovieBg from './images/mandalorian-bg.png';
 
-import { ContentWrapper } from './components/styles/ContentWrapper.styled'; 
+import ContentWrapper from './components/styles/ContentWrapper.styled'; 
 import Navigation from './components/Navigation';
 import Header from './components/Header';
-import SearchField from './components/SearchField';
 import MovieCard from './components/MovieCard';
 
 const API_URL = 'http://omdbapi.com/?apikey=88c7a902';
@@ -16,6 +15,7 @@ const App = () => {
   const [moviesTopFive, setMoviesTopFive] = useState([]);
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [hasSearched, setHasSearched] = useState(false);
 
   const searchMovies = async (title) => {
     const res = await fetch(`${API_URL}&s=${title}`);
@@ -35,7 +35,10 @@ const App = () => {
 
   function performSearch() {
     searchMovies(searchTerm)
-      .then(foundMovies => setMovies(foundMovies))
+      .then(foundMovies => {
+        setMovies(foundMovies)
+        setHasSearched(true)
+      })
   }
 
   return (
@@ -45,6 +48,7 @@ const App = () => {
 
       {/* Header contains the big featured movie image + search bar*/}
       <Header
+        background={FeaturedMovieBg}
         searchTerm={searchTerm}
         updateParentSearchTerm={setSearchTermFromChild}
         performSearchToParent={performSearch}
@@ -53,40 +57,54 @@ const App = () => {
       {/* Main contains top 5 section + search results section */}
       <main>
         <section> {/* Top 5 */}
-          <div>
-            <h2>Top five of last week</h2>
-            <p>Actually these are totally random</p>
-          </div>
+          <ContentWrapper>
+            <div>
+              <h2>Top five of last week</h2>
+              <p>Actually these are totally random</p>
+            </div>
 
-          <div>
-            {
-              moviesTopFive?.length > 0 ? (
-                moviesTopFive.slice(0, 5).map((movie, index) => (
-                  <MovieCard key={index} movie={movie} />
-                ))
-              ) :
-              (
-                'No top five found'
-              )
-            }
-          </div>
+            <div>
+              {
+                moviesTopFive?.length > 0 ? (
+                  moviesTopFive.slice(0, 5).map((movie, index) => (
+                    <MovieCard key={index} movie={movie} />
+                  ))
+                ) :
+                (
+                  'No top five found'
+                )
+              }
+            </div>
+          </ContentWrapper>
         </section>
 
         <section> {/* Movie search results */}
-          <div>
-            { movies?.length > 0
-              ? (
-                <>
-                <h2>Results for: { searchTerm }</h2>
-                {
-                  movies.map((movie, index) => <MovieCard key={index} movie={movie} />)
-                }
-                </>
-              ) : (
-                <p>No movies found for: {searchTerm}</p>
+          <ContentWrapper>
+            <div>
+              { hasSearched ?
+              (
+                // If user has searched, chech if there are movies and display them
+                movies?.length > 0 ?
+                (
+                  <>
+                    <h2>Results for: { searchTerm }</h2>
+                    {
+                      movies.map((movie, index) => <MovieCard key={index} movie={movie} />)
+                    }
+                  </>
+                ) : (
+                  <p>No movies found for: {searchTerm}</p>
+                ) 
+              ) : ( 
+                  // If user hasn't searched yet, show 'Look for movie' msg
+                  <p>Search for a movie</p>
               )
-            }
-          </div> 
+              }                
+              
+              
+
+            </div> 
+          </ContentWrapper>
         </section>
       </main>
     </div>
