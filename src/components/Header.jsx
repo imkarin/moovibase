@@ -18,6 +18,7 @@ background-image: url(${props => props.background});
 background-size: cover;
 background-repeat: no-repeat;
 background-attachment: fixed;
+z-index: -1;
 
 > .background-gradient {
   position: absolute;

@@ -8,7 +8,6 @@ const StyledNav = styled.nav`
   position: absolute;
   padding-top: 32px;
   padding-bottom: 32px;
-  z-index: 2;
 
   img {
     grid-column: 1 / 6;
