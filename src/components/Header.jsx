@@ -1,50 +1,59 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import SearchField from './SearchField'
 import ContentWrapper from './styles/ContentWrapper.styled'
+import SearchField from './SearchField'
+import TopFiveMovies from './TopFiveMovies'
 
 const StyledHeader = styled.header`
-position: relative;
-width: 100%;
-height: calc(100% - 64px);
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-text-align: center;
-overflow: hidden;
-background-image: url(${props => props.background});
-background-size: cover;
-background-repeat: no-repeat;
-background-attachment: fixed;
-z-index: -1;
-
-> .background-gradient {
-  position: absolute;
-  z-index: 0;
+  position: relative;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(0deg, rgba(0,0,0,0.9) 10%, rgba(0,0,0,0) 60%);
-}
+  height: calc(100% - 64px);
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: url(${props => props.background});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: 0;
 
-> div:first-child {
-  z-index: 1;
-  
-  > div { // h1 and searchfield
-    grid-column: 4 / 10;
+  > .background-gradient {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(0,0,0,0.9) 10%, rgba(0,0,0,0) 60%);
   }
-}
 
-h1 {
-  font-weight: 300;
-  color: ${({theme}) => theme.colors.cloud };
-  margin-bottom: 48px;
+  > div:first-child { // ContentWrapper (Search)
+    margin: auto 0;
+    z-index: 1;
+    
+    > div { // H1 and searchfield
+      grid-column: 4 / 10;
+      
+      > h1 {
+      font-weight: 300;
+      color: ${({theme}) => theme.colors.cloud };
+      margin-bottom: 48px;
 
-  strong {
-    font-weight: 600;
+        strong {
+          font-weight: 600;
+        }
+      }
+    }
   }
-}
+
+
+  > section { // Top 5 movies
+    width: 100%;
+    transform: translateY(32px);
+    z-index: 2;
+  }
 `
 
 const Header = (props) => {
@@ -64,7 +73,11 @@ const Header = (props) => {
             performSearchToParent={props.performSearchToParent} 
             />
         </div>
+
       </ContentWrapper>
+
+      <TopFiveMovies></TopFiveMovies>
+
       <div className='background-gradient'></div>
     </StyledHeader>
   )

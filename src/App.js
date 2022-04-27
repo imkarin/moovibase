@@ -105,7 +105,7 @@ const App = () => {
         {/* Navigation bar */}
         <Navigation />
 
-        {/* Header contains the big featured movie image + search bar*/}
+        {/* Header contains the big featured movie image (bg) + search bar + top 5*/}
         <Header
           background={FeaturedMovieBg}
           searchTerm={searchTerm}
@@ -113,9 +113,9 @@ const App = () => {
           performSearchToParent={performSearch}
         />
 
-        {/* Main contains top 5 section + search results section */}
+        {/* Main contains search results section */}
         <main>
-          <section> {/* Top 5 */}
+          {/* <section>
             <ContentWrapper>
               <div>
                 <h2>Top five of last week</h2>
@@ -135,7 +135,7 @@ const App = () => {
                 }
               </div>
             </ContentWrapper>
-          </section>
+          </section> */}
 
           <section> {/* Movie search results */}
             <ContentWrapper>
