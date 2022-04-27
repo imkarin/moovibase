@@ -1,15 +1,23 @@
 import React from 'react'
+import styled from 'styled-components'
 
 import Logo from '../images/logo.png'
 import ContentWrapper from './styles/ContentWrapper.styled'
 
+const StyledNav = styled.nav`
+  position: absolute;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  z-index: 2;
+`
+
 const Navigation = () => {
   return (
-    <nav>
+    <StyledNav>
       <ContentWrapper>
         <img src={Logo} alt="MooviBase logo" />
       </ContentWrapper>
-    </nav>
+    </StyledNav>
   )
 }
 

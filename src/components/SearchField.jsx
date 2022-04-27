@@ -9,8 +9,7 @@ const StyledSearchField = styled.div`
   gap: 16px;
 
   > button {
-    width: 152px;
-    padding: 16px;
+    padding: 0 16px;
     text-transform: uppercase;
     background: #fff;
   }

@@ -14,6 +14,11 @@ const GlobalStyles = createGlobalStyle`
     font-weight: ${({theme}) => theme.typography.body.weight};
     letter-spacing: ${({theme}) => theme.typography.body.letterSpacing};
     color: ${({theme}) => theme.colors.slate};
+    height: 100%;
+  }
+
+  .app {
+    height: 100vh;
   }
   
   img {

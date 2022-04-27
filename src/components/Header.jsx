@@ -5,23 +5,30 @@ import SearchField from './SearchField'
 import ContentWrapper from './styles/ContentWrapper.styled'
 
 const StyledHeader = styled.header`
+position: relative;
 width: 100%;
-height: 90vh;
+height: calc(100% - 64px);
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
 text-align: center;
+overflow: hidden;
+background-image: url(${props => props.background});
+background-size: cover;
+background-repeat: no-repeat;
+background-attachment: fixed;
 
-> .background {
+> .background-gradient {
   position: absolute;
-  top: 0;
-  z-index: -1;
-  height: 100%;
+  z-index: 0;
   width: 100%;
-  background-image: url(${props => props.background});
-  background-size: cover;
-  background-repeat: no-repeat;
+  height: 100%;
+  background: linear-gradient(0deg, rgba(0,0,0,0.9) 10%, rgba(0,0,0,0) 60%);
+}
+
+> div:first-child {
+  z-index: 1;
 }
 
 h1 {
@@ -41,7 +48,6 @@ const Header = (props) => {
   
   return (
     <StyledHeader background={props.background}>
-      <div className='background'></div>
       <ContentWrapper>
         <div>
           <h1>
@@ -54,6 +60,7 @@ const Header = (props) => {
             />
         </div>
       </ContentWrapper>
+      <div className='background-gradient'></div>
     </StyledHeader>
   )
 }
