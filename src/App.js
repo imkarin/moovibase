@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 
-import SearchIcon from './images/search-icon.svg';
+import SearchBar from './components/SearchBar';
 import MovieCard from './components/MovieCard';
 
 // Create styles
@@ -40,6 +40,10 @@ const App = () => {
   }, []);
 
   // arrow functions in jsx are bad practice, so replace with regular function
+  function setSearchTermFromChild(term) {
+    setSearchTerm(term);
+  }
+
   function performSearch() {
     searchMovies(searchTerm)
       .then(foundMovies => setMovies(foundMovies))
@@ -49,22 +53,11 @@ const App = () => {
     <div className='app'>
       <h1 className={classes.myHeader}>Moovi</h1>
 
-      <div className='search'>
-        <input 
-          placeholder='Search for movies'
-          type='text'
-          value={searchTerm}
-          onChange={(e) => { setSearchTerm(e.target.value) }}
+      <SearchBar 
+        searchTerm={searchTerm}
+        searchTermToParent={setSearchTermFromChild} 
+        performSearchToParent={performSearch} 
         />
-        <button className={classes.button}> 
-          <img 
-            src={SearchIcon}
-            alt='Search icon'
-            onClick={performSearch}
-            className={classes.searchIcon}
-            />
-        </button>
-      </div>
 
       <div className='container'>
         { movies?.length > 0
