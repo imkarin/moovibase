@@ -1,9 +1,30 @@
-import React from 'react';
-import SearchIcon from '../images/search-icon.svg';
+import React from 'react'
+import styled from 'styled-components'
+
+const StyledSearchField = styled.div`
+  width: 100%;
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+
+  > button {
+    width: 152px;
+    padding: 16px;
+    text-transform: uppercase;
+    background: #fff;
+  }
+
+  > input {
+    flex-grow: 1;
+    background: #fff;
+    padding: 0 16px;
+  }
+`
 
 const SearchField = (props) => {
   return (
-    <div>
+    <StyledSearchField>
       <input 
         placeholder='Search for movies'
         type='text'
@@ -11,12 +32,9 @@ const SearchField = (props) => {
         onChange={(e) => { props.updateParentSearchTerm(e.target.value) }}
       />
       <button onClick={props.performSearchToParent}> 
-        <img 
-          src={SearchIcon}
-          alt='Search icon'
-          />
+        Search movie
       </button>
-    </div>
+    </StyledSearchField>
   )
 }
 
