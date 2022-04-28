@@ -30,11 +30,13 @@ const StyledHeader = styled.header`
     background: linear-gradient(0deg, rgba(0,0,0,0.9) 10%, rgba(0,0,0,0) 60%);
   }
 
-  > div:first-child { // ContentWrapper (Search)
+  // ContentWrapper
+  > div:first-child {
     margin: auto 0;
     z-index: 1;
-    
-    > div { // H1 and searchfield
+
+    // H1 and searchfield
+    > div { 
       grid-column: 4 / 10;
       
       > h1 {
@@ -49,11 +51,11 @@ const StyledHeader = styled.header`
     }
   }
 
-
-  > section { // Top 5 movies
-    width: 100%;
-    transform: translateY(32px);
-    z-index: 2;
+  // TopFiveMovies spacing
+  > section {
+      width: 100%;
+      transform: translateY(32px);
+      z-index: 1;
   }
 `
 
@@ -77,7 +79,7 @@ const Header = (props) => {
 
       </ContentWrapper>
 
-      <TopFiveMovies></TopFiveMovies>
+      <TopFiveMovies movies={props.movies}></TopFiveMovies>
 
       <div className='background-gradient'></div>
     </StyledHeader>

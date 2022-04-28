@@ -81,7 +81,7 @@ const App = () => {
   
   useEffect(() => {
     searchMovies('The Batman')
-      .then(foundMovies => setMoviesTopFive(foundMovies));
+      .then(foundMovies => setMoviesTopFive(foundMovies.slice(0, 5)));
   }, []);
 
   // arrow functions in jsx are bad practice, so replace with regular function
@@ -111,6 +111,7 @@ const App = () => {
           searchTerm={searchTerm}
           updateParentSearchTerm={setSearchTermFromChild}
           performSearchToParent={performSearch}
+          movies={moviesTopFive}
         />
 
         {/* Main contains search results section */}

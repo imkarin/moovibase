@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import MovieCard from './MovieCard'
 import ContentWrapper from './styles/ContentWrapper.styled'
 
 const StyledTopFiveMovies = styled.section`
@@ -16,34 +17,46 @@ const StyledTopFiveMovies = styled.section`
     color: ${({theme}) => theme.colors.slateLight}
   }
 
-  > div { // Contentwrapper
+  // Contentwrapper
+  > div {
     height: 100%;
-    
-    > div:first-child { // Text
+
+    // Text
+    > .top5-text {
       grid-column: 1 / 3;
       margin-top: 38px;
     }
 
-    >div:nth-child(2) { // Moviecards
+    // Moviecards
+    > .top5-movies {
       grid-column: 3 / 13;
-      background: ${({theme}) => theme.colors.nightsky};
-      opacity: 0.7;
+      background: transparent;
       height: 100%;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-gap: 32px;
+
+      > .test {
+        height: 20px;
+        background: red;
+      }
     }
   }
 `
 
-const TopFiveMovies = () => {
+const TopFiveMovies = ({movies}) => {
   return (
     <StyledTopFiveMovies className='top-five-movies'>
       <ContentWrapper>
-        <div>
+        <div className='top5-text'>
           <h2>Top five of last week</h2>
           <p className='caption'>Actually they're totally random</p>
         </div>
 
-        <div>
-
+        <div className='top5-movies'>
+          { movies.map((movie, index) => (
+            <MovieCard movie={movie} />
+          ))}
         </div>
       </ContentWrapper>
     </StyledTopFiveMovies>
