@@ -7,9 +7,10 @@ const StyledMovieCard = styled.div`
 
   > figure {
     position: relative;
+    height: 121px;
 
     > img {
-      height: 121px;
+      height: 100%;
       width: 100%;
       object-fit: cover;
       object-position: 50% 55%;
@@ -18,7 +19,7 @@ const StyledMovieCard = styled.div`
     > figcaption {
       position: absolute;
       top: 0;
-      height: calc(100% + 7px);
+      height: calc(100% + 11px);
       width: 100%;
       display: flex;
       align-items: flex-end;
@@ -28,17 +29,18 @@ const StyledMovieCard = styled.div`
       > h3 {
         color: ${({theme}) => theme.colors.cloud};
         max-width: 160px;
+        // margin-bottom: -6px;
       }
 
       > p {
-        margin-bottom: 1px;
+        // margin-bottom: -5px;
       }
     }
   }
 
   // Year
   > div {
-    padding: 8px 16px 18px;
+    padding: 19px 16px 18px;
 
     > p {
       color: ${({theme}) => theme.colors.slateLight };
