@@ -80,7 +80,7 @@ const App = () => {
   }
   
   useEffect(() => {
-    searchMovies('The Batman')
+    searchMovies('House')
       .then(foundMovies => setMoviesTopFive(foundMovies.slice(0, 5)));
   }, []);
 

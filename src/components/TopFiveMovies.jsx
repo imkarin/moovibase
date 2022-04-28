@@ -4,18 +4,7 @@ import MovieCard from './MovieCard'
 import ContentWrapper from './styles/ContentWrapper.styled'
 
 const StyledTopFiveMovies = styled.section`
-  height: 206px;
-  margin-top: -174px;
   text-align: left;
-  
-  h2 {
-    color: ${({theme}) => theme.colors.cloud };
-    margin-bottom: 12px;
-  }
-
-  p {
-    color: ${({theme}) => theme.colors.slateLight}
-  }
 
   // Contentwrapper
   > div {
@@ -25,21 +14,24 @@ const StyledTopFiveMovies = styled.section`
     > .top5-text {
       grid-column: 1 / 3;
       margin-top: 38px;
+      
+      h2 {
+      color: ${({theme}) => theme.colors.cloud };
+      margin-bottom: 12px;
+    }
+
+    p {
+      color: ${({theme}) => theme.colors.slateLight}
+    } 
     }
 
     // Moviecards
     > .top5-movies {
       grid-column: 3 / 13;
       background: transparent;
-      height: 100%;
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
       grid-gap: 32px;
-
-      > .test {
-        height: 20px;
-        background: red;
-      }
     }
   }
 `
@@ -55,7 +47,7 @@ const TopFiveMovies = ({movies}) => {
 
         <div className='top5-movies'>
           { movies.map((movie, index) => (
-            <MovieCard movie={movie} />
+            <MovieCard key={index} movie={movie} />
           ))}
         </div>
       </ContentWrapper>

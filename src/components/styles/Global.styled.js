@@ -38,7 +38,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: ${({theme}) => theme.typography.h1.size};
     font-weight: ${({theme}) => theme.typography.h1.weight};
     letter-spacing: ${({theme}) => theme.typography.h1.letterSpacing};
-    // color: ${({theme}) => theme.colors.nightsky};
+    color: ${({theme}) => theme.colors.cloud};
   }
   
   h2 {
@@ -59,7 +59,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: ${({theme}) => theme.typography.bodySmaller.size};
     font-weight: ${({theme}) => theme.typography.bodySmaller.weight};
     letter-spacing: ${({theme}) => theme.typography.bodySmaller.letterSpacing};
-    color: ${({theme}) => theme.colors.slate};
+    color: ${({theme}) => theme.colors.cloudDark};
   }
 
   button {
