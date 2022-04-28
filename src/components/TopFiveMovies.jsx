@@ -8,7 +8,12 @@ const StyledTopFiveMovies = styled.section`
   text-align: left;
   
   h2 {
-    color: ${({theme}) => theme.colors.cloud }
+    color: ${({theme}) => theme.colors.cloud };
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: ${({theme}) => theme.colors.slateLight}
   }
 
   > div { // Contentwrapper
@@ -16,11 +21,13 @@ const StyledTopFiveMovies = styled.section`
     
     > div:first-child { // Text
       grid-column: 1 / 3;
+      margin-top: 38px;
     }
 
     >div:nth-child(2) { // Moviecards
       grid-column: 3 / 13;
-      background: grey;
+      background: ${({theme}) => theme.colors.nightsky};
+      opacity: 0.7;
       height: 100%;
     }
   }
@@ -31,7 +38,7 @@ const TopFiveMovies = () => {
     <StyledTopFiveMovies className='top-five-movies'>
       <ContentWrapper>
         <div>
-          <h2>Top five movies last week</h2>
+          <h2>Top five of last week</h2>
           <p className='caption'>Actually they're totally random</p>
         </div>
 

@@ -19,6 +19,7 @@ const StyledHeader = styled.header`
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-position: center top;
   z-index: 0;
 
   > .background-gradient {

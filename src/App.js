@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import FeaturedMovieBg from './images/mandalorian-bg.png';
+import FeaturedMovieBg from './images/mandalorian-bg.jpg';
 
 import GlobalStyles from './components/styles/Global.styled';
 import ContentWrapper from './components/styles/ContentWrapper.styled'; 
@@ -115,29 +115,7 @@ const App = () => {
 
         {/* Main contains search results section */}
         <main>
-          {/* <section>
-            <ContentWrapper>
-              <div>
-                <h2>Top five of last week</h2>
-                <p>Actually these are totally random</p>
-              </div>
-
-              <div>
-                {
-                  moviesTopFive?.length > 0 ? (
-                    moviesTopFive.slice(0, 5).map((movie, index) => (
-                      <MovieCard key={index} movie={movie} />
-                    ))
-                  ) :
-                  (
-                    'No top five found'
-                  )
-                }
-              </div>
-            </ContentWrapper>
-          </section> */}
-
-          <section> {/* Movie search results */}
+          <section style={{padding: '64px 0 64px'}}> {/* Movie search results */}
             <ContentWrapper>
               <div>
                 { hasSearched ?
@@ -152,7 +130,7 @@ const App = () => {
                       }
                     </>
                   ) : (
-                    <p>No movies found for: {searchTerm}</p>
+                    <h2>No movies found for: {searchTerm}</h2>
                   ) 
                 ) : ( 
                     // If user hasn't searched yet, show 'Look for movie' msg
